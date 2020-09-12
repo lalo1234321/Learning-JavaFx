@@ -4,6 +4,8 @@ package com.javafx.main;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -16,23 +18,8 @@ public class Main extends Application
     @Override
     public void start(Stage arg0) throws Exception
     {
-        Button btn=new Button("Click me");
-        Button exitBtn=new Button("Exit");
-        exitBtn.setOnAction(e -> {
-            System.out.println("The program is closing");
-            System.exit(0);
-        });
-        btn.setOnAction(new EventHandler<ActionEvent>()
-        { 
-            @Override
-            public void handle(ActionEvent arg0)
-            {
-                System.out.println("You clicked the button");
-            }
-        });
-        VBox root=new VBox();
-        root.getChildren().addAll(btn,exitBtn);  
-        Scene scene=new Scene(root,600,400);
+        Parent root=FXMLLoader.load(getClass().getResource("Main.fxml"));
+        Scene scene=new Scene(root);
         arg0.setScene(scene);
         arg0.setTitle("First JavaFx Application");
         arg0.show();
